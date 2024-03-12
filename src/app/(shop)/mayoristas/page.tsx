@@ -1,3 +1,3 @@
-export default function WholesalersPage() {
+export default function WholeSalersPage() {
   return <>Mayorista</>;
 }

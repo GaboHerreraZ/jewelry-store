@@ -1,0 +1,35 @@
+.loadership {
+  display: flex;
+  position: relative;
+  width: 90px;
+  height: 8px;
+}
+
+.loadership div {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 8px;
+  border-radius: 4px;
+  background: #c48b21;
+}
+
+.loadership div:nth-child(1) {
+  width: 90px;
+  opacity: 0.3;
+}
+
+.loadership div:nth-child(2) {
+  width: 40px;
+  animation: loadership_move alternate 1s infinite;
+  animation-timing-function: cubic-bezier(0.5, 0, 0.24, 1);
+}
+
+@keyframes loadership_move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50px);
+  }
+}

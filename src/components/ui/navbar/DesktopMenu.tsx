@@ -1,40 +1,44 @@
 import Image from "next/image";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+
 import logo from "../../../../public/png/bellarte-icono.png";
 import { NavbarLink } from "./NavbarLink";
-import { ButtonLink } from "./ButtonLink";
+import { Base } from "@/interfaces/base";
+import { NavbarCategories } from "./NavbarCategories";
+import { GENDERS } from "@/utils/constant";
+import { Profile } from "./Profile";
 
-export const DesktopMenu = ({ children }: { children: React.ReactNode }) => {
+interface Props {
+  subcategories: Base[];
+  children: React.ReactNode;
+}
+
+export const DesktopMenu = ({ children, subcategories }: Props) => {
   return (
-    <div className=" grid  w-full">
+    <div className=" grid w-full">
+      <div className="flex py-4 px-10 bg-slate-950 border-b-[1px] border-gold justify-between items-center h-10">
+        <div className="flex gap-4 text-gold justify-center items-center">
+          <FaFacebook size={20} />
+          <FaInstagram size={20} />
+        </div>
+      </div>
       <div className="p-2 flex justify-center bg-slate-950 pt-5">
         <Image src={logo} alt="Bellarte Joyería" width={150} />
       </div>
-      <nav className="grid  w-full sticky top-0  justify-center ">
+      <nav className="flex z-50   w-full sticky top-0  justify-center bg-white ">
         <ul className="text-slate-950 font-bold flex gap-10 text-lg">
-          <NavbarLink label="Quiero ser mayorista" href="mayoristas" />
-          <li className="relative  ">
-            <ButtonLink label="Catálogo" />
-            <nav className="absolute border-t-[1px]  z-0 border-gold bg-slate-950 invisible opacity-0  w-[500px] -left-52  peer-hover:visible peer-hover:opacity-100 hover:opacity-100 hover:visible  transition-all duration-500 ease-in-out">
-              <ul className="flex justify-evenly gap-5 w-full  py-2 text-white ">
-                <NavbarLink
-                  label="Oro laminado"
-                  href="catalogo?categoria=oro laminado"
-                />
-                <NavbarLink
-                  label="Plata 925"
-                  href="catalogo?categoria=plata 925"
-                />
-
-                <NavbarLink
-                  label="Bisutería"
-                  href="catalogo?categoria=bisuteria"
-                />
-              </ul>
-            </nav>
-          </li>
-          <NavbarLink label="Garantía" href="garantia" />
-          <NavbarLink label="Contácto" href="contacto" />
+          {GENDERS.map((gender) => (
+            <NavbarCategories
+              key={gender.id}
+              subcategories={subcategories}
+              label={gender.name}
+              gender={gender.id}
+            />
+          ))}
+          <NavbarLink label="Mayoristas" href="mayoristas" />
+          <NavbarLink label="Contacto" href="contacto" />
         </ul>
+        <Profile />
       </nav>
       {children}
     </div>

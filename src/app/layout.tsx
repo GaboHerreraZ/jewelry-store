@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Darker_Grotesque } from "next/font/google";
 import "./globals.css";
 
-const darker = Darker_Grotesque({ subsets: ["latin"] });
+import { darker } from "@/config/config";
+import { Loading } from "@/components/ui";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: {
@@ -19,7 +20,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={darker.className}>{children}</body>
+      <body className={darker.className}>
+        {children}
+        <Loading />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: "#020617",
+              color: "#C48B21",
+            },
+          }}
+        />
+      </body>
     </html>
   );
 }

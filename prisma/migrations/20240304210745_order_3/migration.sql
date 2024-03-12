@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "public"."Order" ALTER COLUMN "paidAt" DROP NOT NULL,
+ALTER COLUMN "paymentId" DROP NOT NULL,
+ALTER COLUMN "paymentMethod" DROP NOT NULL,
+ALTER COLUMN "secretToken" DROP NOT NULL;

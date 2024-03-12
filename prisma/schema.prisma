@@ -1,0 +1,225 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("NEXT_PUBLIC_DATABASE_URL")
+  directUrl = env("NEXT_PUBLIC_DIRECT_URL")
+  schemas   = ["public"]
+}
+
+
+enum Gender {
+  hombre
+  mujer
+  nino
+  unisex
+  @@schema("public")
+
+}
+
+enum ShippingStatus {
+  inProgress
+  shipped
+  delivered
+  @@schema("public")
+
+}
+
+enum OrderStatus {
+  pending
+  paid
+  @@schema("public")
+}
+
+
+model Product {
+  id          String @id @default(uuid())
+  sku         String @unique 
+  slug        String @unique
+  name        String
+  description String
+  detailPrice Float
+  wholesalePrice Float
+  available   Boolean
+  owner       Boolean @default(false)
+  quantity    Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  productImage ProductImage[] 
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  String
+  size        String 
+  gender      Gender 
+  warranty   Boolean @default(false)
+  warrantyDescription String @default("")
+
+  subcategory Subcategory @relation(fields: [subcategoryId], references: [id])
+  subcategoryId String
+
+
+  orderProduct ProductOrder[]
+  desiredProduct DesiredProduct[]
+
+
+  @@schema("public")
+}
+
+model Category {
+  id        String @id @default(uuid())
+  name      String
+  description String
+  Product  Product[]
+
+  @@schema("public")
+}
+
+model Subcategory {
+  id        String @id @default(uuid())
+  name      String
+  description String
+  Product  Product[]
+
+  @@schema("public")
+}
+
+
+model ProductImage {
+  id        Int @id @default(autoincrement())
+  url       String
+  folder    String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  @@schema("public")
+}
+
+model User {
+  id          String @id @default(uuid())
+  authId      String @unique  
+  email       String @unique
+  name        String
+  lastName    String
+  phone       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  address     UserAddress[]
+  orders      Order[]
+  gender      Gender
+  birthMonth  Int
+  birthDay    Int
+  completeProfile Boolean @default(false)
+  preference Preference?
+  desiredProduct DesiredProduct[]
+
+
+  @@schema("public")
+}
+
+
+
+model Preference {
+  id        String @id @default(uuid())
+  user      User @relation(fields: [userId], references: [authId])
+  userId    String @unique
+  women     Boolean
+  man       Boolean
+  kid       Boolean
+  ring      Boolean
+  necklace  Boolean
+  anklet    Boolean
+  rosarie   Boolean
+  charm     Boolean
+  bracelet  Boolean
+  candonga  Boolean
+  earring   Boolean
+
+  @@schema("public")
+
+}
+
+model UserAddress {
+  id          String @id @default(uuid())
+  address      String
+  name        String
+  lastName    String
+  departmentCode  String
+  department  String
+  cityCode    String
+  city    String
+  additional  String
+  postalCode  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User @relation(fields: [userId], references: [authId])
+  userId      String
+  main        Boolean
+
+  orderAddress OrderAddress[]
+
+  @@schema("public")
+}
+
+
+model DesiredProduct {
+  id        String @id @default(uuid())
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+  user      User @relation(fields: [userId], references: [authId])
+  userId    String
+
+  @@schema("public")
+
+}
+
+model Order {
+  id              String @id @default(uuid())
+  total           Float
+  isPaid          Boolean @default(false)
+  paidAt          DateTime?
+  paymentId       String?
+  paymentMethod   String?
+  status          OrderStatus
+  shippingStatus  ShippingStatus 
+  secretToken     String?
+  createdAt       DateTime @default(now())
+  user            User @relation(fields: [userId], references: [authId])
+  userId          String
+  trackingLink    String?  
+
+  address    OrderAddress?
+
+  items     ProductOrder[]
+
+  @@schema("public")
+}
+
+model OrderAddress {
+  id        String @id @default(uuid())
+  email      String
+  phone      String
+  order      Order @relation(fields: [orderId], references: [id])
+  orderId    String @unique
+
+  address     UserAddress @relation(fields: [addressId], references: [id])
+  addressId   String
+
+  @@schema("public")
+
+}
+
+model ProductOrder {
+  id        String @id @default(uuid())
+  quantity  Int
+  price     Float
+  createdAt DateTime @default(now())
+  order     Order @relation(fields: [orderId], references: [id])
+  orderId   String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  @@schema("public")
+}

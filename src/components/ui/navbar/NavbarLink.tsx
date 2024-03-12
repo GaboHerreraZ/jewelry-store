@@ -1,25 +1,44 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import clsx from "clsx";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface Props {
   label: string;
   href: string;
+  subLink?: boolean;
+  gender?: string;
 }
 
-export const NavbarLink = ({ label, href }: Props) => {
-  const path: string = usePathname();
+export const NavbarLink = ({ label, href, subLink = false, gender }: Props) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const createUrlPath = () => {
+    if (!subLink) {
+      router.replace(`/${href}`);
+      return;
+    }
+
+    const params = new URLSearchParams(searchParams);
+    params.set("subcategoria", href);
+
+    const url = `/genero/${gender}?${params.toString()}`;
+    router.replace(url);
+  };
 
   return (
-    <li className="hover:scale-105 transition-all duration-500 py-2">
-      <Link
-        href={`/${href}`}
-        className={`py-2 cursor-pointer hover:text-gold border-b-gold transition-all duration-150 ${
-          path === `/${href}` ? "border-b-gold border-b-4" : ""
-        }`}
+    <li
+      className={clsx("", {
+        "py-2": !subLink,
+        "": subLink,
+      })}
+    >
+      <span
+        onClick={createUrlPath}
+        className={` cursor-pointer hover:text-gold border-b-gold transition-all duration-150`}
       >
         {label}
-      </Link>
+      </span>
     </li>
   );
 };

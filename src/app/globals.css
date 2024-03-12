@@ -1,3 +1,21 @@
+:root {
+  --toastify-color-success: #c48b21;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .button-gold {
+    @apply border-gold shadow hover:bg-slate-400/5 hover:text-gold transition-all duration-500 px-2 py-1  border-solid border-[1px] text-slate-950 font-bold;
+  }
+
+  .button-secundary {
+    @apply shadow  px-2 py-1  text-center bg-slate-950 text-white font-bold;
+  }
+
+  .button-delete {
+    @apply border-red-500 shadow hover:bg-slate-500/5 hover:text-red-500 transition-all duration-500 px-2 py-1 rounded border-solid border-2 text-red-950 font-bold;
+  }
+}

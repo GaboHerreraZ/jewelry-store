@@ -1,17 +1,19 @@
-import { Menu } from "@/components/ui/navbar";
+import { getUser } from "@/actions";
+import { CartSidebar, ProfileSidebar } from "@/components";
+import { Menu } from "@/components/ui";
 
-export default function ShopLayout({
+export default async function ShopLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { email } = await getUser();
+
   return (
     <main>
-      <Menu>
-        <div className="h-[1500px]"> </div>
-        {children}
-      </Menu>
-      {/* <SideBar /> */}
+      <Menu>{children}</Menu>
+      <ProfileSidebar email={email!} />
+      <CartSidebar />
       {/* <Footer /> */}
     </main>
   );
