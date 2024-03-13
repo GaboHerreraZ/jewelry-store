@@ -1,6 +1,6 @@
 import { getUser } from "@/actions";
 import { CartSidebar, ProfileSidebar } from "@/components";
-import { Menu } from "@/components/ui";
+import { Footer, Menu } from "@/components/ui";
 
 export default async function ShopLayout({
   children,
@@ -14,7 +14,7 @@ export default async function ShopLayout({
       <Menu>{children}</Menu>
       <ProfileSidebar email={email!} />
       <CartSidebar />
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 }

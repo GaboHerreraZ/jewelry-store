@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        "custom-bottom":
+          "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
+      },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },
@@ -28,7 +32,7 @@ const config: Config = {
         bisuteria: "#8f54ad",
       },
       backgroundImage: {
-        gold: "url('../../public/jpg/anillo-oro-laminado.jpg')",
+        // gold: "url('../../public/jpg/anillo-oro-laminado.jpg')",
         silver: "url('../../public/webp/anillo-plata.webp')",
         bisuteria: "url('../../public/webp/manilla-bisuteria.webp')",
       },

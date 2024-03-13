@@ -13,12 +13,12 @@ const Checkbox = forwardRef<HTMLInputElement, IProps>(
           {...rest}
           id={placeholder}
           type="checkbox"
-          className="appearance-none h-6 w-6  border-[1px] border-slate-200 rounded-full checked:bg-gold checked:scale-75 transition-all duration-200 peer"
+          className="appearance-none h-6 w-6 bg-white border-[1px] border-slate-200 rounded-full checked:bg-gold checked:scale-75 transition-all duration-200 peer"
         />
-        <div className="h-6 w-6 absolute rounded-full pointer-events-none peer-checked:bg-white peer-checked:border-gold peer-checked:border-2"></div>
+        <div className="h-6 w-6 absolute rounded-full pointer-events-none peer-checked:border-gold peer-checked:border-2"></div>
         <label
           htmlFor={placeholder}
-          className="flex flex-col font-bold justify-center px-2 peer-checked:text-gold text-raffle-text select-none"
+          className="flex flex-col justify-center px-2 peer-checked:text-gold text-raffle-text select-none"
         >
           {placeholder}
         </label>

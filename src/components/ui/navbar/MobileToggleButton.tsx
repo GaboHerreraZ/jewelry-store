@@ -9,10 +9,14 @@ export const MobileToggleButton = () => {
 
   return (
     <button
-      className=" flex z-10  items-center text-gold  text-sm"
+      className=" flex z-10  items-center text-slate-950 text-sm"
       onClick={() => toggle()}
     >
-      {isSideMenuOpen ? <IoClose size={30} /> : <IoMenu size={30} />}
+      {isSideMenuOpen ? (
+        <IoClose className="text-white" size={30} />
+      ) : (
+        <IoMenu size={30} />
+      )}
     </button>
   );
 };

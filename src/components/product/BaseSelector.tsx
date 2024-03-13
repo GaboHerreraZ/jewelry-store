@@ -22,14 +22,12 @@ export const BaseSelector = ({
       setBaseSelected((state) =>
         state.includes(value) ? state : [...state, event.target.value]
       );
+      setParams(filter, [baseSelected, value]);
     } else {
       setBaseSelected((state) => [...state.filter((s) => s !== value)]);
+      setParams(filter, [...baseSelected.filter((v) => v !== value)]);
     }
   };
-
-  useEffect(() => {
-    setParams(filter, baseSelected);
-  }, [baseSelected, filter, setParams]);
 
   return (
     <div className="p-2">
@@ -39,7 +37,7 @@ export const BaseSelector = ({
             onChange={handleChange}
             type="checkbox"
             value={b.name}
-            checked={state.includes(b.name)}
+            checked={baseSelected.includes(b.name)}
             id={b.id}
             className="appearance-none h-6 w-6 bg-white border-[1px] border-slate-200 rounded-full checked:bg-gold checked:scale-75 transition-all duration-200 peer"
           />

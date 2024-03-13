@@ -60,13 +60,13 @@ export const createUpdatedUser = async (user: User) => {
     });
 
     revalidatePath("/usuario/perfil");
-    revalidatePath("/admin");
+    revalidatePath("/admin/usuarios");
+    revalidatePath(`/admin/usuario/${user.authId}`);
 
     return {
       ok: prismaTx.ok,
     };
   } catch (error) {
-    console.log("error", error);
     return {
       ok: false,
       error: "Error al crear o actualizar el usuario",

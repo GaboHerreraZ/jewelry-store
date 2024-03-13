@@ -51,7 +51,7 @@ export const ProductFilters = ({ categories, subcategories }: Props) => {
       >
         <aside
           className={clsx(
-            "w-[280px]  bg-white z-20 absolute h-screen  transition-all duration-700",
+            "w-[280px]  bg-white z-50 absolute h-screen  transition-all duration-700",
             {
               "translate-x-0": isOpen,
               "-translate-x-full": !isOpen,

@@ -114,6 +114,7 @@ model User {
   completeProfile Boolean @default(false)
   preference Preference?
   desiredProduct DesiredProduct[]
+  wholesaler Boolean @default(false)
 
 
   @@schema("public")

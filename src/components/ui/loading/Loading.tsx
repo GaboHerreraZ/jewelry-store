@@ -11,7 +11,7 @@ export const Loading = () => {
   return (
     <>
       {loading && (
-        <div className="fixed bg-black/45 z-50 top-0 h-screen w-full flex flex-col gap-2 justify-center items-center">
+        <div className="fixed bg-black/80 z-50 top-0 h-screen w-full flex flex-col gap-2 justify-center items-center">
           <Image src={logo} alt="Logo Bellarte Joyería" width={200} />
           <div className="loadership">
             <div></div>

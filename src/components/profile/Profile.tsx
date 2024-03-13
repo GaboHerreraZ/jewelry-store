@@ -12,6 +12,7 @@ import { createUpdatedUser } from "@/actions";
 import { toastError, toastSuccess } from "@/utils/notifications";
 import { GENDERS } from "@/utils/constant";
 import Link from "next/link";
+import { WholesalerButton } from "../admin";
 
 interface Props {
   user: Partial<User>;
@@ -119,6 +120,11 @@ export const Profile = ({ user, disabled }: Props) => {
           {...register("email")}
           placeholder="Correo Electrónico"
           disabled
+        />
+
+        <Checkbox
+          {...register("wholesaler", { disabled: true })}
+          placeholder="Mayorista"
         />
       </div>
       <header className="flex mt-4 justify-between border-b-[1px] border-gray-200 pb-5">

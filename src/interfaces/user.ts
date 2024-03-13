@@ -14,6 +14,7 @@ export interface User {
   createdAt: Date;
   updatedAt: Date;
   preference: Preference | null;
+  wholesaler: boolean;
 }
 
 export interface Preference {

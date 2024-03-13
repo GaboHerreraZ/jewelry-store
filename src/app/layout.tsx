@@ -6,11 +6,13 @@ import { Loading } from "@/components/ui";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bellartejoyeria.com"),
   title: {
-    template: "%s - Joyería BellArte | Shop",
-    default: "Inicio - Joyería BellArte | Shop",
+    template: "%s | Joyería BellArte",
+    default: "Inicio | Joyería BellArte",
   },
-  description: "Tienda virtual de productos de Joyería de oro laminado 18k",
+  description:
+    "Explora en BellArte Joyería exclusivas joyas en oro, oro laminado y plata. Piezas únicas que realzan tu estilo. Encuentra tu tesoro o el regalo perfecto",
 };
 
 export default function RootLayout({

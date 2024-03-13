@@ -18,7 +18,7 @@ export const ButtonLink = ({
   return (
     <button
       onClick={handleGender}
-      className={`peer hover:scale-105 box-content transition-all duration-150 pt-2 after:text-[10px] after:ml-1 hover:text-gold`}
+      className={`peer h-full flex items-center transition-all duration-150  after:text-[10px] after:ml-1 hover:text-gold`}
     >
       {label}
     </button>
