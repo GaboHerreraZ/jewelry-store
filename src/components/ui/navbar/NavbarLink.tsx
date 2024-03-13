@@ -7,7 +7,7 @@ interface Props {
   href: string;
   subLink?: boolean;
   gender?: string;
-  className: string;
+  className?: string;
 }
 
 export const NavbarLink = ({
