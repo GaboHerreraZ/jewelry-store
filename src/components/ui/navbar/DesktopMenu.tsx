@@ -38,8 +38,16 @@ export const DesktopMenu = ({ children, subcategories }: Props) => {
               gender={gender.id}
             />
           ))}
-          <NavbarLink label="Mayoristas" href="mayoristas" />
-          <NavbarLink label="Contacto" href="contacto" />
+          <NavbarLink
+            label="Mayoristas"
+            href="mayoristas"
+            className="flex items-center"
+          />
+          <NavbarLink
+            label="Contacto"
+            href="contacto"
+            className="flex items-center"
+          />
         </ul>
         <Profile className="absolute top-3 right-10" />
       </nav>

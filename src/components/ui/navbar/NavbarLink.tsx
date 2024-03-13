@@ -1,4 +1,5 @@
 "use client";
+import clsx from "clsx";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface Props {
@@ -6,9 +7,16 @@ interface Props {
   href: string;
   subLink?: boolean;
   gender?: string;
+  className: string;
 }
 
-export const NavbarLink = ({ label, href, subLink = false, gender }: Props) => {
+export const NavbarLink = ({
+  label,
+  href,
+  subLink = false,
+  gender,
+  className,
+}: Props) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -28,7 +36,10 @@ export const NavbarLink = ({ label, href, subLink = false, gender }: Props) => {
   return (
     <li
       onClick={createUrlPath}
-      className="flex items-center h-full cursor-pointer hover:text-gold border-b-gold transition-all duration-150"
+      className={clsx(
+        "cursor-pointer hover:text-gold border-b-gold transition-all duration-150",
+        className
+      )}
     >
       {label}
     </li>

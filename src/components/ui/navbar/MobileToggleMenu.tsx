@@ -9,16 +9,23 @@ export const MobileToggleMenu = () => {
     <div
       className={`${
         isSideMenuOpen ? `translate-x-0  ` : ` -translate-x-full`
-      } transition-all duration-500 absolute top-0  w-full`}
+      } transition-all duration-500 fixed top-0  w-full`}
     >
       <ul
-        className={`text-white flex flex-col  justify-center text-center  bg-slate-950/80 w-full h-screen text-xl`}
+        className={`text-white flex flex-col justify-center gap-10 items-center text-center  bg-slate-950/80 w-full fixed min-h-screen text-xl`}
       >
-        <NavbarLink label="Hombre" href="genero/hombre" />
-        <NavbarLink label="Mujer" href="genero/mujer" />
-        <NavbarLink label="Niño" href="genero/nino" />
-        <NavbarLink label="Mayoristas" href="mayoristas" />
-        <NavbarLink label="Contáctanos" href="contacto" />
+        <NavbarLink label="Hombre" href="genero/hombre" className="" />
+        <NavbarLink label="Mujer" href="genero/mujer" className="" />
+        <NavbarLink label="Niño" href="genero/nino" className="" />
+        <NavbarLink label="Mayoristas" href="mayoristas" className="" />
+        <NavbarLink label="Contáctanos" href="contacto" className="" />
+        <li className="mt-10 italic px-5">
+          <p className="text-white font-bold">
+            La mejor forma de deshacerse de la tentación es caer en ella... en
+            una joyería.
+          </p>
+          <p className="text-center text-gold text-xl">Coco Chanel</p>
+        </li>
       </ul>
     </div>
   );

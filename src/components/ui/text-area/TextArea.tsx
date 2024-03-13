@@ -18,7 +18,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, IProps>(
           <textarea
             ref={ref}
             {...rest}
-            className={`${className}  z-50 bg-transparent shadow border-[0.5px]  px-2 py-1 focus:border-gold focus:border-[1px]  outline-none`}
+            className={`${className}  z-10 bg-transparent shadow border-[0.5px]  px-2 py-1 focus:border-gold focus:border-[1px]  outline-none`}
             placeholder={`${placeholder}${rest.required ? " *" : ""}`}
           />
         </label>
