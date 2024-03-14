@@ -1,4 +1,5 @@
 "use client";
+import { useNavbarStore } from "@/store/navbar/navbar-store";
 import clsx from "clsx";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -8,6 +9,7 @@ interface Props {
   subLink?: boolean;
   gender?: string;
   className?: string;
+  desktop?: boolean;
 }
 
 export const NavbarLink = ({
@@ -16,13 +18,16 @@ export const NavbarLink = ({
   subLink = false,
   gender,
   className,
+  desktop = true,
 }: Props) => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const toogleSideMenu = useNavbarStore((state) => state.toogleSideMenu);
 
   const createUrlPath = () => {
     if (!subLink) {
       router.replace(`/${href}`);
+      if (!desktop) toogleSideMenu();
       return;
     }
 

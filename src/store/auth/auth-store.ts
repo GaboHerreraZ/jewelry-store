@@ -13,7 +13,7 @@ export const useAuthStore = create<State>()(() => {
       const { data } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: "http://localhost:3000/auth/callback",
+          redirectTo: "http://bellartejoyeria.com/auth/callback",
         },
       });
       return data;

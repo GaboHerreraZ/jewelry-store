@@ -55,7 +55,8 @@ export async function generateMetadata({
       url: `https://bellartejoyeria.com/genero/${gender}`,
     },
     verification: {
-      google: "google-site-verification=",
+      google:
+        "google-site-verification=ml8yek4F0ARyMjz2nZhGf96nTfb3JA7AIN4yq3MOkcQ",
     },
   };
 }

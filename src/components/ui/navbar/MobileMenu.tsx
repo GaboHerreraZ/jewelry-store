@@ -10,9 +10,9 @@ export const MobileMenu = ({ children }: { children: React.ReactNode }) => {
     <>
       <div className="sticky z-50 top-0 ">
         <nav className="grid bg-white">
-          <header className="grid grid-flow-col z-10  items-center text-white w-full p-2 ">
+          <header className="flex justify-around z-10  items-center text-white w-full p-2 ">
             <MobileToggleButton />
-            <div className="flex w-full relative  justify-self-center flex-row">
+            <div className="flex ml-2 w-full relative  justify-self-center flex-row">
               <Image
                 className="z-10 "
                 src={logo}
@@ -20,10 +20,8 @@ export const MobileMenu = ({ children }: { children: React.ReactNode }) => {
                 width={100}
               />
             </div>
-          </header>
-          <div className="grid justify-center relative">
             <Profile className="mt-2 py-2" />
-          </div>
+          </header>
           <MobileToggleMenu />
         </nav>
       </div>

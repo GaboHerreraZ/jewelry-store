@@ -14,11 +14,11 @@ export const MobileToggleMenu = () => {
       <ul
         className={`text-white flex flex-col justify-center gap-10 items-center text-center  bg-slate-950/80 w-full fixed min-h-screen text-xl`}
       >
-        <NavbarLink label="Hombre" href="genero/hombre" className="" />
-        <NavbarLink label="Mujer" href="genero/mujer" className="" />
-        <NavbarLink label="Niño" href="genero/nino" className="" />
-        <NavbarLink label="Mayoristas" href="mayoristas" className="" />
-        <NavbarLink label="Contáctanos" href="contacto" className="" />
+        <NavbarLink label="Hombre" href="genero/hombre" desktop={false} />
+        <NavbarLink label="Mujer" href="genero/mujer" desktop={false} />
+        <NavbarLink label="Niño" href="genero/nino" desktop={false} />
+        <NavbarLink label="Mayoristas" href="mayoristas" desktop={false} />
+        <NavbarLink label="Contáctanos" href="contacto" desktop={false} />
         <li className="mt-10 italic px-5">
           <p className="text-white font-bold">
             La mejor forma de deshacerse de la tentación es caer en ella... en

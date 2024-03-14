@@ -31,7 +31,7 @@ export const WompiButton = ({
 
       script.setAttribute(
         "data-redirect-url",
-        "http://localhost:3000/confirmacion-pago"
+        "http://bellartejoyeria.com/confirmacion-pago"
       );
 
       const container = document.getElementById("wompi-button");

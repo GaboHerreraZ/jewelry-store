@@ -35,7 +35,7 @@ export const Footer = () => {
           <p className="mt-4 text-sm font-bold">2024 BellArte Joyería</p>
           <p className="text-sm">Todos los derechos reservados</p>
         </div>
-        <div>
+        <div className="mt-10 md:mt-0">
           <h1 className="font-bold text-xl">Tienda</h1>
           <ul className="mt-5">
             <li className="hover:underline">
@@ -56,7 +56,7 @@ export const Footer = () => {
           </ul>
         </div>
 
-        <div>
+        <div className="mt-10 md:mt-0">
           <h1 className="font-bold text-xl">Contacto</h1>
           <p className="mt-5">
             <span className="font-bold">Email:</span>
@@ -72,14 +72,14 @@ export const Footer = () => {
           </p>
         </div>
 
-        <div>
+        <div className="mt-10 md:mt-0">
           <h1 className="font-bold text-xl">Nosotros</h1>
           <ul className="mt-5">
             <li className="hover:underline">
               <Link href="/mayoristas">Trabaja con nosotros</Link>
             </li>
             <li className="hover:underline">
-              <Link href="/mayoristas">Terminos y condiciones</Link>
+              <Link href="/terminos-y-condiciones">Terminos y condiciones</Link>
             </li>
             <li>
               <PaymentMethods />
