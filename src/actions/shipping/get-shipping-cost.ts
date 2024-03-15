@@ -2,7 +2,6 @@
 import { Shipping } from "@/interfaces/shipping";
 
 export const getShippingCost = async (shipping: Shipping) => {
-  console.log(shipping);
   const response = await fetch(
     `https://api.envioclickpro.com.co/api/v2/quotation`,
     {
@@ -16,8 +15,6 @@ export const getShippingCost = async (shipping: Shipping) => {
   );
 
   const data = await response.json();
-
-  console.log(data);
 
   return data;
 };

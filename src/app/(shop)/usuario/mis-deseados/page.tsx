@@ -5,8 +5,6 @@ import { ProductCard } from "@/components/product/ProductCard";
 export default async function WishlistPage() {
   const { id } = await getUser();
 
-  console.log(id);
-
   if (!id) notFound();
 
   const desired = await getDesiredProducts(id);

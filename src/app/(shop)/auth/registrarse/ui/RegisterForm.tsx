@@ -35,7 +35,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <div className="grid p-5 md:p-0 mt-20 w-full items-center justify-center py-10">
+    <div className="grid px-2 md:p-0 mt-20 w-full items-center md:justify-center py-10">
       <div className="flex w-full md:w-[280px] flex-col rounded  md:flex-row shadow-md">
         <div className="w-full p-5 ">
           <header className=" flex flex-col items-center justify-center text-center">

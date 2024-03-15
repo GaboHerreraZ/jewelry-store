@@ -1,4 +1,9 @@
-import { getAllProducts, getProductBySlug } from "@/actions";
+import {
+  getAllProducts,
+  getProductBySlug,
+  getUser,
+  getUserByAuthId,
+} from "@/actions";
 import { ProductDetail } from "@/components";
 import { Product } from "@/interfaces/product";
 import { Metadata } from "next";
@@ -51,7 +56,18 @@ export default async function ProductPage({
 }: {
   params: { id: string };
 }) {
+  let wholeSalerUser = false;
   const product = await getProductBySlug(id);
+  const { id: authId } = await getUser();
+  if (authId) {
+    const user = await getUserByAuthId(authId);
+    wholeSalerUser = user?.wholesaler!;
+  }
 
-  return <ProductDetail product={product as Product} />;
+  return (
+    <ProductDetail
+      product={product as Product}
+      wholeSalerUser={wholeSalerUser}
+    />
+  );
 }

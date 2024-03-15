@@ -1,4 +1,4 @@
-import { getProducts } from "@/actions";
+import { getProducts, getUser, getUserByAuthId } from "@/actions";
 import { ProductContainer } from "@/components";
 import { Gender } from "@/utils/constant";
 import { Metadata } from "next";
@@ -39,6 +39,8 @@ export async function generateMetadata({
         ? "Joyería para hombres"
         : gender === Gender.women
         ? "Joyería para mujeres"
+        : gender === "all"
+        ? "Joyería para todos"
         : "Joyería para niños",
     description:
       "Descubre la colección de joyería de BellArte Joyería, con elegantes diseños para hombres, mujeres y niños. Filtra por categoría y encuentra la pieza perfecta.",
@@ -65,6 +67,7 @@ export default async function GenderPage({
   params: { gender },
   searchParams: { page, categoria, subcategoria, order, orderBy },
 }: Props) {
+  let wholesalerUser = false;
   const productPage = page ? parseInt(page) : 1;
 
   const category = categoria ? categoria.split(",") : [];
@@ -72,6 +75,12 @@ export default async function GenderPage({
 
   const productOrder = order ? order : "asc";
   const productOrderBy = orderBy ? orderBy : "name";
+
+  const { id } = await getUser();
+  if (id) {
+    const user = await getUserByAuthId(id);
+    wholesalerUser = user?.wholesaler!;
+  }
 
   const products = await getProducts({
     page: productPage,
@@ -81,6 +90,7 @@ export default async function GenderPage({
     subcategory,
     orderBy: productOrderBy,
     order: productOrder,
+    wholesaler: wholesalerUser,
   });
 
   return <ProductContainer products={products?.products!} />;

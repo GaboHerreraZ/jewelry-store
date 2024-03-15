@@ -3,10 +3,6 @@ export const getSecretTokenWompi = async (
   total: number,
   integritySecret: string
 ) => {
-  console.log(orderId);
-  console.log(total);
-  console.log(integritySecret);
-
   const concatedString = `${orderId}${total * 100}COP${integritySecret}`;
   const encondedText = new TextEncoder().encode(concatedString);
   const hashBuffer = await crypto.subtle.digest("SHA-256", encondedText);

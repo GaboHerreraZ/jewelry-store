@@ -16,7 +16,6 @@ export const ContactForm = () => {
   } = useForm<Contact>();
 
   const onSubmit = async (data: Contact) => {
-    console.log(data);
     toggleLoading(true);
 
     try {

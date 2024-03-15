@@ -14,6 +14,7 @@ import {
   useSearchParams,
 } from "next/navigation";
 import { ProductOrder } from "./ProductOrder";
+import Link from "next/link";
 
 interface Props {
   categories: Base[];
@@ -51,15 +52,15 @@ export const ProductFilters = ({ categories, subcategories }: Props) => {
       >
         <aside
           className={clsx(
-            "w-[280px]  bg-white z-50 fixed h-screen  transition-all duration-700",
+            "w-[280px]  bg-white z-50 border-r-[2px] border-gold fixed h-screen  transition-all duration-700",
             {
               "translate-x-0": isOpen,
               "-translate-x-full": !isOpen,
             }
           )}
         >
-          <div className="flex justify-between items-center px-2 font-bold">
-            <h1 className="text-slate-950 text-2xl">Filtrar Busqueda</h1>
+          <div className="flex border-b-[1px] border-gray-200 justify-between items-center px-2 font-bold">
+            <h1 className="text-slate-950 text-2xl">Filtrar Búsqueda</h1>
             <button onClick={handleOpen} className="cursor-pointer  p-2">
               <IoMdClose
                 size={30}
@@ -96,6 +97,14 @@ export const ProductFilters = ({ categories, subcategories }: Props) => {
               state={subcategoryFilter}
               setParams={handleParams}
             />
+          </div>
+          <div className="mt-2 flex pr-2 justify-end">
+            <Link
+              className="button-gold"
+              href="https://bellartejoyeria.com/genero/all"
+            >
+              Limpiar Filtros
+            </Link>
           </div>
         </aside>
         {isOpen && (

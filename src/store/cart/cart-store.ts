@@ -24,6 +24,7 @@ interface State {
     contactInfo: { email: string; phone: string },
     products: { items: number; product: Product }[]
   ) => void;
+  reset: () => void;
 }
 
 export const useCartStore = create<State>()((set, get) => ({
@@ -93,4 +94,14 @@ export const useCartStore = create<State>()((set, get) => ({
   ) => {
     set(() => ({ items, address, contactInfo, products }));
   },
+  reset: () =>
+    set(() => ({
+      orderId: "",
+      items: 0,
+      address: {} as Address,
+      contactInfo: { email: "", phone: "" },
+      shippingCost: 0,
+      isSidebarOpen: false,
+      products: [],
+    })),
 }));

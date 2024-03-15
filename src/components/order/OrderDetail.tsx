@@ -5,8 +5,6 @@ import { OrderDetailProduct } from "./OrderDetailProduct";
 import { OrderState } from "./OrderState";
 
 export const OrderDetail = ({ order }: { order: OrderCheckout }) => {
-  console.log(order);
-
   return (
     <section className="mt-5 md:mt-20 px-2  md:px-0 grid justify-center">
       <header className="flex flex-col gap-5  border-b-[1px] border-gray-200 pb-5">

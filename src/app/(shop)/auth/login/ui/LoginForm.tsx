@@ -55,7 +55,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="grid p-5 md:p-0 mt-20 w-full items-center justify-center py-10">
+    <div className="grid px-2  md:p-0 mt-20 w-full items-center md:justify-center py-10">
       <div className="flex  w-full md:w-[280px] flex-col  md:flex-row shadow rounded ">
         <div className="w-full p-5 ">
           <header className=" flex flex-col items-center justify-center text-center">
@@ -79,16 +79,12 @@ export const LoginForm = () => {
                 {...register("password", { required: true })}
                 placeholder="Ingresa tu contraseña"
                 type="password"
+                autoComplete="current-password"
                 error={errors.email && "Contraseña requerido"}
               />
             </div>
 
             <div className="my-3 flex flex-wrap content-center">
-              <input
-                id="remember"
-                type="checkbox"
-                className="mr-1 accent-gold text-white"
-              />
               <a href="#" className="text-xs font-semibold text-gold">
                 ¿Olvidó su contraseña?
               </a>

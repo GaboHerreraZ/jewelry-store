@@ -35,6 +35,11 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
     const formData = new FormData();
     const { images, ...rest } = data;
 
+    if (data.available && Number(data.quantity) === 0) {
+      toastError("El producto no puede estar disponible si la cantidad es 0");
+      return;
+    }
+
     if (images?.length === 0 && product.productImage?.length === 0) {
       toastError("Se requiere al menos una imagen");
       return;
@@ -168,7 +173,7 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
             placeholder="Género"
           />
           <Checkbox {...register("available")} placeholder="Disponible" />
-          <Checkbox {...register("owner")} placeholder="Propio" />
+          <Checkbox {...register("owner")} placeholder="Mayorista" />
         </div>
         <h1 className="border-b-[1px] mt-5 border-gray-300 text-xl font-extrabold  uppercase">
           Adjuntar Imagenes

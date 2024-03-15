@@ -4,6 +4,7 @@ import logo from "../../../../public/png/Logo_negro.png";
 import { Profile } from "./Profile";
 import { MobileToggleButton } from "./MobileToggleButton";
 import { MobileToggleMenu } from "./MobileToggleMenu";
+import Link from "next/link";
 
 export const MobileMenu = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -13,12 +14,14 @@ export const MobileMenu = ({ children }: { children: React.ReactNode }) => {
           <header className="flex justify-around z-10  items-center text-white w-full p-2 ">
             <MobileToggleButton />
             <div className="flex ml-2 w-full relative  justify-self-center flex-row">
-              <Image
-                className="z-10 "
-                src={logo}
-                alt="Bellarte Joyería"
-                width={100}
-              />
+              <Link href="/">
+                <Image
+                  className="z-10 "
+                  src={logo}
+                  alt="Bellarte Joyería"
+                  width={100}
+                />
+              </Link>
             </div>
             <Profile />
           </header>

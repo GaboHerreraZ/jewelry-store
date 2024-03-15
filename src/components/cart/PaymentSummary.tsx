@@ -4,7 +4,13 @@ import Link from "next/link";
 import { ConfirmButton } from "./ConfirmButton";
 import { UpdateOrderButton } from "./UpdateOrderButton";
 
-export const PaymentSummary = ({ authId }: { authId: string }) => {
+export const PaymentSummary = ({
+  authId,
+  wholesaler,
+}: {
+  authId: string;
+  wholesaler: boolean;
+}) => {
   const address = useCartStore((state) => state.address);
   const created = usePaymentStore((state) => state.created);
 
@@ -59,7 +65,11 @@ export const PaymentSummary = ({ authId }: { authId: string }) => {
           <Link className="button-gold" href={`/checkout/envio`}>
             Volver
           </Link>
-          {!created ? <ConfirmButton authId={authId} /> : <UpdateOrderButton />}
+          {!created ? (
+            <ConfirmButton authId={authId} wholesaler={wholesaler} />
+          ) : (
+            <UpdateOrderButton />
+          )}
         </div>
       </footer>
     </div>

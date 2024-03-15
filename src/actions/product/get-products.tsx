@@ -10,6 +10,7 @@ interface Props {
   gender?: Gender;
   orderBy?: string;
   order?: string;
+  wholesaler: boolean;
 }
 
 export const getProducts = async ({
@@ -20,11 +21,15 @@ export const getProducts = async ({
   gender,
   orderBy = "name",
   order = "asc",
+  wholesaler,
 }: Props) => {
   if (isNaN(Number(page))) page = 1;
   if (page < 1) page = 1;
 
   const whereClause = {
+    ...(wholesaler && {
+      owner: true,
+    }),
     gender,
     ...(subcategory?.length && {
       OR: [
@@ -56,6 +61,9 @@ export const getProducts = async ({
       take,
       where: !gender
         ? {
+            ...(wholesaler && {
+              owner: true,
+            }),
             ...(subcategory?.length && {
               OR: [
                 {
@@ -100,6 +108,7 @@ export const getProducts = async ({
       totalPages,
       products: products.map((product) => ({
         ...product,
+        detailPrice: wholesaler ? product.wholesalePrice : product.detailPrice,
       })) as Product[],
     };
   } catch (e) {

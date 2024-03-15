@@ -15,6 +15,7 @@ const columns: Column[] = [
   { label: "Phone" },
   { label: "Perfil Completo" },
   { label: "Genero" },
+  { label: "Rol" },
   { label: "Fecha Creación" },
   { label: "Acciones" },
 ];
@@ -37,6 +38,11 @@ export const UserGrid = ({ users, totalPages }: Props) => {
               trueLabel="Si"
             />
             <TextRow label={GENDERS.find((g) => g.id === user.gender)?.name!} />
+            <StateRow
+              state={user.wholesaler}
+              falseLabel="Detalista"
+              trueLabel="Mayorista"
+            />
             <DateRow date={user.createdAt} />
             <ActionRow
               actions={[

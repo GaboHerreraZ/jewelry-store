@@ -1,13 +1,61 @@
 import "./style.css";
-import Image from "next/image";
+import { ZoomImage } from "./ZoomImage";
 
-import cadena from "../../../public/home/cadena.jpg";
-import anillos from "../../../public/home/anillos.jpg";
-import aretes from "../../../public/home/aretes.jpg";
-import dije from "../../../public/home/dije.jpeg";
-import pulsera from "../../../public/home/pulsera.jpg";
-import tobilleras from "../../../public/home/tobilleras.jpg";
-import Link from "next/link";
+const images = [
+  {
+    className: "anillos",
+    urlImage:
+      "https://neemxhjfpkzimvlwwlpe.supabase.co/storage/v1/object/public/publicImage/home/anillos.jpg?t=2024-03-15T19%3A20%3A28.552Z",
+    label: "Anillos",
+    link: "https://bellartejoyeria.com/genero/all?subcategoria=%2CAnillos",
+    alt: "Anillos en BellArte",
+  },
+
+  {
+    className: "cadenas",
+    urlImage:
+      "https://neemxhjfpkzimvlwwlpe.supabase.co/storage/v1/object/public/publicImage/home/cadena.jpg?t=2024-03-15T19%3A20%3A03.045Z",
+    label: "Cadenas",
+    link: "https://bellartejoyeria.com/genero/all?subcategoria=%2CCadenas",
+    alt: "Cadenas en BellArte",
+  },
+
+  {
+    className: "aretes",
+    urlImage:
+      "https://neemxhjfpkzimvlwwlpe.supabase.co/storage/v1/object/public/publicImage/home/aretes.jpg?t=2024-03-15T19%3A20%3A37.464Z",
+    label: "Candongas",
+    link: "https://bellartejoyeria.com/genero/all?subcategoria=%2CCandongas",
+    alt: "Candongas en BellArte",
+  },
+
+  {
+    className: "dijes",
+    urlImage:
+      "https://neemxhjfpkzimvlwwlpe.supabase.co/storage/v1/object/public/publicImage/home/dije.jpeg?t=2024-03-15T19%3A20%3A45.457Z",
+    label: "Dijes",
+    link: "https://bellartejoyeria.com/genero/all?subcategoria=%2CDijes",
+    alt: "Dijes en BellArte",
+  },
+
+  {
+    className: "pulseras",
+    urlImage:
+      "https://neemxhjfpkzimvlwwlpe.supabase.co/storage/v1/object/public/publicImage/home/pulsera.jpg",
+    label: "Pulseras",
+    link: "https://bellartejoyeria.com/genero/all?subcategoria=%2CPulseras",
+    alt: "Pulseras en BellArte",
+  },
+
+  {
+    className: "tobilleras",
+    urlImage:
+      "https://neemxhjfpkzimvlwwlpe.supabase.co/storage/v1/object/public/publicImage/home/tobilleras.jpg",
+    label: "Tobilleras",
+    link: "https://bellartejoyeria.com/genero/all?subcategoria=%2CTobilleras",
+    alt: "Tobilleras en BellArte",
+  },
+];
 
 export const FindInBellarte = () => {
   return (
@@ -17,109 +65,9 @@ export const FindInBellarte = () => {
       </h1>
 
       <div className="wrapper">
-        <div className="anillos group  relative">
-          <Image
-            src={anillos}
-            alt="Anillos en BellArte  "
-            sizes="100%"
-            fill
-            style={{ objectFit: "cover" }}
-          />
-          <div className="absolute w-full flex justify-center bottom-4">
-            <Link
-              href="https://bellartejoyeria.com/genero/all?subcategoria=%2CAnillos"
-              className="bg-gold/45 px-3 py-1 rounded  text-white text-xl"
-            >
-              Anillos
-            </Link>
-          </div>
-        </div>
-        <div className="cadenas relative">
-          <Image
-            src={cadena}
-            alt="Cadenas en BellArte"
-            sizes="100%"
-            fill
-            style={{ objectFit: "cover" }}
-          />
-          <div className="absolute w-full flex justify-center bottom-4">
-            <Link
-              href="https://bellartejoyeria.com/genero/all?subcategoria=%2CCadenas"
-              className="bg-gold/45 px-3  rounded  text-white text-xl"
-            >
-              Cadenas
-            </Link>
-          </div>
-        </div>
-        <div className="aretes relative">
-          <Image
-            src={aretes}
-            alt="Candongas en BellArte"
-            sizes="100%"
-            fill
-            style={{ objectFit: "cover" }}
-          />
-          <div className="absolute w-full flex justify-center bottom-4">
-            <Link
-              href="https://bellartejoyeria.com/genero/all?subcategoria=%2CCandongas"
-              className="bg-gold/45 px-3  rounded  text-white text-xl"
-            >
-              Candongas
-            </Link>
-          </div>
-        </div>
-        <div className="dijes relative">
-          <Image
-            src={dije}
-            alt="Dijes en BellArte"
-            sizes="100%"
-            fill
-            style={{ objectFit: "cover" }}
-          />
-          <div className="absolute w-full flex justify-center bottom-4">
-            <Link
-              href="https://bellartejoyeria.com/genero/all?subcategoria=%2CDijes"
-              className="bg-gold/45 px-3  rounded  text-white text-xl"
-            >
-              Dijes
-            </Link>
-          </div>
-        </div>
-        <div className="pulseras relative">
-          <Image
-            src={pulsera}
-            alt="Pulseras en BellArte"
-            sizes="100%"
-            fill
-            style={{ objectFit: "cover" }}
-          />
-          <div className="absolute w-full flex justify-center bottom-4">
-            <Link
-              href="https://bellartejoyeria.com/genero/all?subcategoria=%2CPulseras"
-              className="bg-gold/45 px-3  rounded  text-white text-xl"
-            >
-              Pulseras
-            </Link>
-          </div>
-        </div>
-
-        <div className="tobilleras relative">
-          <Image
-            src={tobilleras}
-            alt="Tobilleras en BellArte"
-            sizes="100%"
-            fill
-            style={{ objectFit: "cover" }}
-          />
-          <div className="absolute w-full flex justify-center bottom-4">
-            <Link
-              href="https://bellartejoyeria.com/genero/all?subcategoria=%2CTobilleras"
-              className="bg-gold/45 px-3  rounded  text-white text-xl"
-            >
-              Tobilleras
-            </Link>
-          </div>
-        </div>
+        {images.map((image) => (
+          <ZoomImage key={image.label} {...image} />
+        ))}
       </div>
     </section>
   );

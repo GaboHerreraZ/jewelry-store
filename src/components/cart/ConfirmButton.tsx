@@ -4,8 +4,16 @@ import { createOrder } from "@/actions";
 import { useCartStore, useLoadingStore, usePaymentStore } from "@/store";
 import { OrderCheckout } from "@/interfaces/orderCheckout";
 import { OrderStatus, ShippingStatus } from "@/utils/constant";
+import { toastError } from "@/utils/notifications";
+import { currencyFormat } from "@/utils/currenyFormat";
 
-export const ConfirmButton = ({ authId }: { authId: string }) => {
+export const ConfirmButton = ({
+  authId,
+  wholesaler,
+}: {
+  authId: string;
+  wholesaler: boolean;
+}) => {
   const address = useCartStore((state) => state.address);
   const getTotal = useCartStore((state) => state.getTotal);
   const products = useCartStore((state) => state.products);
@@ -28,6 +36,15 @@ export const ConfirmButton = ({ authId }: { authId: string }) => {
   };
 
   const handleOrder = async () => {
+    if (wholesaler && getTotal() < 1000000) {
+      toastError(
+        `El valor mínimo de compra para mayoristas es de ${currencyFormat(
+          1000000
+        )}`
+      );
+      return;
+    }
+
     const orderToSend: OrderCheckout = {
       id: order?.id,
       status: OrderStatus.pending,
@@ -52,12 +69,9 @@ export const ConfirmButton = ({ authId }: { authId: string }) => {
       shippingStatus: ShippingStatus.inProgress,
     };
 
-    console.log(orderToSend);
-
     toggleLoading(true);
     const response = await createOrder(orderToSend);
     if (response.ok) {
-      console.log("response", response);
       setPayment(
         response.order!,
         response.publicKey!,

@@ -44,7 +44,7 @@ export const ProductCard = ({
             </div>
             <div className="absolute  bottom-3 w-full">
               <ButtonAddCart product={product} />
-              <ButtonDetail id={product.slug} />
+              <ButtonDetail id={product.slug} name={product.name} />
             </div>
           </div>
         </div>

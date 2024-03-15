@@ -16,7 +16,13 @@ import {
   VisaIcon,
 } from "@/utils";
 
-export const ProductDetailDescription = ({ product }: { product: Product }) => {
+export const ProductDetailDescription = ({
+  product,
+  wholeSalerUser,
+}: {
+  product: Product;
+  wholeSalerUser: boolean;
+}) => {
   return (
     <div>
       <section className="border-b-[1px] border-gray-200 pb-10">
@@ -60,19 +66,13 @@ export const ProductDetailDescription = ({ product }: { product: Product }) => {
         </div>
         <div className="flex gap-5 mt-4">
           <div>
-            <h3 className="text-sm underline">Precio Detal:</h3>
+            <h3 className="text-sm">Precio:</h3>
             <p className="text-2xl text-gold ">
-              {currencyFormat(product.detailPrice)}
+              {currencyFormat(
+                wholeSalerUser ? product.wholesalePrice : product.detailPrice
+              )}
             </p>
           </div>
-          {product.owner && (
-            <div>
-              <h3 className="text-sm underline">Precio Mayorista:</h3>
-              <p className="text-2xl text-gold ">
-                {currencyFormat(product.wholesalePrice)}
-              </p>
-            </div>
-          )}
         </div>
 
         <p className="text-xl mt-4">{product.description}</p>
