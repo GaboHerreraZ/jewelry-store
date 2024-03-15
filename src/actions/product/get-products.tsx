@@ -54,7 +54,32 @@ export const getProducts = async ({
     const products = await prisma.product.findMany({
       skip: (page - 1) * take,
       take,
-      where: !gender ? {} : whereClause,
+      where: !gender
+        ? {
+            ...(subcategory?.length && {
+              OR: [
+                {
+                  subcategory: {
+                    name: {
+                      in: subcategory,
+                    },
+                  },
+                },
+              ],
+            }),
+            ...(category?.length && {
+              OR: [
+                {
+                  category: {
+                    name: {
+                      in: category,
+                    },
+                  },
+                },
+              ],
+            }),
+          }
+        : whereClause,
       include: {
         productImage: true,
         desiredProduct: true,

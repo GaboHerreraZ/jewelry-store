@@ -1,4 +1,4 @@
-import { Banner } from "@/components/home";
+import { Banner, FindInBellarte } from "@/components/home";
 import { Company } from "@/components/company";
 import { Categories } from "@/components/categories";
 
@@ -6,8 +6,9 @@ export default function Home() {
   return (
     <>
       <Banner />
-      <Categories />
-      <Company />
+      <FindInBellarte />
+      {/* <Categories /> */}
+      {/* <Company /> */}
     </>
   );
 }

@@ -5,7 +5,7 @@ import { FaUser } from "react-icons/fa";
 import { getUser } from "@/actions";
 import clsx from "clsx";
 
-export const Profile = async ({ className }: { className: string }) => {
+export const Profile = async ({ className }: { className?: string }) => {
   const { id, role } = await getUser();
 
   return (

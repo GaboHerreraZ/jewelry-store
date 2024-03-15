@@ -51,7 +51,7 @@ export const ProductFilters = ({ categories, subcategories }: Props) => {
       >
         <aside
           className={clsx(
-            "w-[280px]  bg-white z-50 absolute h-screen  transition-all duration-700",
+            "w-[280px]  bg-white z-50 fixed h-screen  transition-all duration-700",
             {
               "translate-x-0": isOpen,
               "-translate-x-full": !isOpen,
@@ -101,7 +101,7 @@ export const ProductFilters = ({ categories, subcategories }: Props) => {
         {isOpen && (
           <div
             onClick={handleOpen}
-            className="w-full h-full z-10 transition-all duration-500 absolute  bg-black/50"
+            className="w-full h-full z-10 transition-all duration-500 fixed  bg-black/50"
           ></div>
         )}
       </div>

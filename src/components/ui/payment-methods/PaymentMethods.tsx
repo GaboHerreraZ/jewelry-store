@@ -12,7 +12,7 @@ export const PaymentMethods = () => {
   return (
     <>
       <h2 className="font-bold">Pagos seguros con Wompi:</h2>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap gap-2">
         <MasterCardIcon size={50} />
         <VisaIcon size={50} />
         <AmericanExpress size={50} />

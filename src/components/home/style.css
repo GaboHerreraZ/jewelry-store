@@ -1,0 +1,59 @@
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    "anillos anillos cadenas cadenas aretes"
+    "anillos anillos pulseras tobilleras dijes";
+  height: 70vh;
+  width: 80vw;
+  grid-gap: 10px;
+}
+
+.anillos {
+  grid-area: anillos;
+  width: 100%;
+}
+
+.cadenas {
+  grid-area: cadenas;
+}
+
+.pulseras {
+  grid-area: pulseras;
+}
+
+.tobilleras {
+  grid-area: tobilleras;
+}
+
+.dijes {
+  grid-area: dijes;
+}
+
+.aretes {
+  grid-area: aretes;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    grid-template-areas:
+      "anillos"
+      "cadenas"
+      "aretes"
+      "pulseras"
+      "tobilleras"
+      "dijes";
+    height: 1500px;
+    width: 100vw;
+    grid-gap: 10px;
+  }
+
+  .anillos,
+  .cadenas,
+  .pulseras,
+  .tobilleras,
+  .dijes,
+  .aretes {
+    height: 250px;
+  }
+}

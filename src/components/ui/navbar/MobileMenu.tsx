@@ -20,7 +20,7 @@ export const MobileMenu = ({ children }: { children: React.ReactNode }) => {
                 width={100}
               />
             </div>
-            <Profile className="mt-2 py-2" />
+            <Profile />
           </header>
           <MobileToggleMenu />
         </nav>
