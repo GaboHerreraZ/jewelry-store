@@ -11,7 +11,7 @@ export default async function ProductsPage({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
 
   const data = Promise.all([
-    getProducts({ page: page, take: 10 }),
+    getProducts({ page: page, take: 10, wholesaler: false }),
     getCategories(),
     getSubcategories(),
   ]);
